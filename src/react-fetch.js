@@ -14,7 +14,7 @@ type Props = {
   url: string,
   method: string,
   options: {},
-  asJson: boolean,
+  asJSON: boolean,
   children: FetchInterface => React.Node
 };
 
@@ -38,7 +38,7 @@ class Fetch extends React.Component<Props, State> {
     method: 'GET',
     options: {},
     withEvent: false,
-    asJson: true
+    asJSON: true
   };
 
   componentDidMount() {
@@ -64,7 +64,7 @@ class Fetch extends React.Component<Props, State> {
 
     try {
       const res = await fetch(url, { ...opts });
-      const parsedResponse = asJson ? await res.json() : await res;
+      const parsedResponse = asJSON ? await res.json() : await res;
 
       this.setState({
         data: parsedResponse,

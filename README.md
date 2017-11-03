@@ -14,7 +14,7 @@ const App = () => {
       url={'some-api-url'} ,
       method={'POST'}, // default GET
       options={{}}, // Default empty object
-      asJson={true}, // Default to json
+      asJSON={true}, // Default to json
     >
       {({
         data, // actual response

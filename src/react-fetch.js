@@ -6,7 +6,7 @@ interface FetchInterface {
   loading: boolean;
   error: boolean;
   errorInfo: string;
-  fetchData: null | Function;
+  fetchData: null | (() => {});
 }
 
 type Props = {

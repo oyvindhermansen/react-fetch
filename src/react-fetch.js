@@ -5,7 +5,7 @@ interface FetchInterface {
   data: any;
   loading: boolean;
   error: boolean;
-  info: string;
+  errorInfo: string;
   fetchData: null | Function;
 }
 
@@ -22,7 +22,7 @@ type State = {
   data: any,
   loading: boolean,
   error: boolean,
-  info: string
+  errorInfo: string
 };
 
 class Fetch extends React.Component<Props, State> {
@@ -30,7 +30,7 @@ class Fetch extends React.Component<Props, State> {
     data: [],
     loading: false,
     error: false,
-    info: ''
+    errorInfo: ''
   };
 
   static defaultProps = {
@@ -75,7 +75,7 @@ class Fetch extends React.Component<Props, State> {
       this.setState({
         error: true,
         loading: false,
-        info: error
+        errorInfo: error
       });
     }
 
@@ -91,7 +91,7 @@ class Fetch extends React.Component<Props, State> {
   };
 
   render() {
-    const { data, loading, error, info } = this.state;
+    const { data, loading, error, errorInfo } = this.state;
     const { withEvent, children } = this.props;
 
     const fetchData = withEvent ? this.triggerFetch : null;
@@ -100,7 +100,7 @@ class Fetch extends React.Component<Props, State> {
       data,
       loading,
       error,
-      info,
+      errorInfo,
       fetchData
     });
   }

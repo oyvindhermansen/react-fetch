@@ -53,9 +53,11 @@ const App = () => {
             {loading ? (
               <h1>Loading...</h1>
             ) : (
-              {data.map(value => {
-                return <p>{value}</p>
-              })}
+              <div>
+                {data.map(value => {
+                  return <p>{value}</p>
+                })}
+              </div>
             )}
           </div>
         )

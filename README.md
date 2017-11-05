@@ -17,13 +17,15 @@ Ajax with React Component
 
 | Name         |      Type   | 
 |--------------|-------------|
-| data         |  any        |
+| data         | any         |
 | loading      | boolean     |
 | error        | boolean     |
 | errorInfo    | string      |
 | fetchData    | function    |
 
 ## Usage
+
+> This shows an example in it's most simplistic form. A regular GET request to fetch some JSON.
 
 ```jsx
 import Fetch from 'react-fetch';
@@ -32,14 +34,7 @@ const App = () => {
   return (
     <Fetch
       url={'some-api-url'},
-      method={'POST'},
-      options={{
-        headers: /* header settings */,
-        body: { my: 'data' }
-      }},
-      asJSON={true},
       withEvent={true},
-      forceRefetch={true}
     >
       {({
         data,
@@ -50,8 +45,9 @@ const App = () => {
       }) => {
         return (
           <div>
+            <button onClick={fetchData}>Fetch some data</button>
             {loading ? (
-              <h1>Loading...</h1>
+              <p>Loading...</p>
             ) : (
               <div>
                 {data.map(value => {

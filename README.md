@@ -28,8 +28,6 @@ Ajax with React Component
 > This shows an example in it's most simplistic form. A regular GET request to fetch some JSON.
 
 ```jsx
-import Fetch from 'react-fetch';
-
 const App = () => {
   return (
     <Fetch

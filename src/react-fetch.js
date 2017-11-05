@@ -5,8 +5,8 @@ interface FetchInterface {
   data: any;
   loading: boolean;
   error: boolean;
-  errorInfo: string;
-  fetchData: null | (() => {});
+  errorInfo: null | {};
+  fetchData: null | ((e: Event) => void);
 }
 
 type Props = {
@@ -23,15 +23,15 @@ type State = {
   data: any,
   loading: boolean,
   error: boolean,
-  errorInfo: string
+  errorInfo: null | {}
 };
 
 class Fetch extends React.Component<Props, State> {
   state = {
-    data: [],
+    data: null,
     loading: false,
     error: false,
-    errorInfo: ''
+    errorInfo: null
   };
 
   static defaultProps = {
@@ -48,14 +48,14 @@ class Fetch extends React.Component<Props, State> {
     const { data } = this.state;
 
     if (!withEvent) {
-      if (!data.length) {
+      if (!data) {
         this.fetchData();
       }
     }
   }
 
   async fetchData(): Promise<boolean> {
-    const { url, method, options, asJson } = this.props;
+    const { url, method, options, asJSON } = this.props;
 
     this.setState({ loading: true });
 
@@ -84,7 +84,7 @@ class Fetch extends React.Component<Props, State> {
     return true;
   }
 
-  triggerFetch = (): void => {
+  triggerFetch = (e: Event): void => {
     const { data } = this.state;
     const { forceRefetch } = this.props;
 
@@ -93,7 +93,7 @@ class Fetch extends React.Component<Props, State> {
       return;
     }
 
-    if (!data.length) {
+    if (!data) {
       this.fetchData();
     }
   };

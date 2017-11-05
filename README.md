@@ -13,15 +13,15 @@ Ajax with React Component
 | forceRefetch | boolean     | false    |
 | withEvent    | boolean     | false    |
 
-## Children returns
+## Children returns:
 
-| Name         |      Type   | 
-|--------------|-------------|
-| data         | any         |
-| loading      | boolean     |
-| error        | boolean     |
-| errorInfo    | string      |
-| fetchData    | function    |
+| Name         |    Type          |    Default   | 
+|--------------|------------------|--------------|
+| data         | any              | null
+| loading      | boolean          | false
+| error        | boolean          | false
+| errorInfo    | null or object   | null
+| fetchData    | null or function | depends on `withEvent`-prop
 
 ## Usage
 
@@ -48,7 +48,7 @@ const App = () => {
               <p>Loading...</p>
             ) : (
               <div>
-                {data.map(value => {
+                {data !== null && data.map(value => {
                   return <p>{value}</p>
                 })}
               </div>

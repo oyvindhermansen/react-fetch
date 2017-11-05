@@ -15,6 +15,7 @@ type Props = {
   method: string,
   options: {},
   asJSON: boolean,
+  forceRefetch: boolean,
   children: FetchInterface => React.Node
 };
 
@@ -38,7 +39,8 @@ class Fetch extends React.Component<Props, State> {
     method: 'GET',
     options: {},
     withEvent: false,
-    asJSON: true
+    asJSON: true,
+    forceRefetch: false
   };
 
   componentDidMount() {
@@ -82,8 +84,14 @@ class Fetch extends React.Component<Props, State> {
     return true;
   }
 
-  triggerFetch = () => {
+  triggerFetch = (): void => {
     const { data } = this.state;
+    const { forceRefetch } = this.props;
+
+    if (forceRefetch) {
+      this.fetchData();
+      return;
+    }
 
     if (!data.length) {
       this.fetchData();

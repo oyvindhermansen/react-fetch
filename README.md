@@ -2,7 +2,28 @@
 
 Ajax with React Component
 
-### Usage
+## Props
+
+| Name         |      Type   |  Default |
+|--------------|-------------|----------|
+| url          |  string     | ' '      |
+| method       | string      | GET      |
+| asJSON       | boolean     | true     |
+| options      | object      | {}       |
+| forceRefetch | boolean     | false    |
+| withEvent    | boolean     | false    |
+
+## Children returns
+
+| Name         |      Type   | 
+|--------------|-------------|
+| data         |  any        |
+| loading      | boolean     |
+| error        | boolean     |
+| errorInfo    | string      |
+| fetchData    | function    |
+
+## Usage
 
 ```jsx
 import Fetch from 'react-fetch';
@@ -10,22 +31,32 @@ import Fetch from 'react-fetch';
 const App = () => {
   return (
     <Fetch
-      withEvent={true}, // default false
-      url={'some-api-url'} ,
-      method={'POST'}, // default GET
-      options={{}}, // Default empty object
-      asJSON={true}, // Default true
+      url={'some-api-url'},
+      method={'POST'},
+      options={{
+        headers: /* header settings */,
+        body: { my: 'data' }
+      }},
+      asJSON={true},
+      withEvent={true},
+      forceRefetch={true}
     >
       {({
-        data, // actual response
-        loading, // loading state
-        error, // error state (boolean)
-        errorInfo, // error message
-        fetchData // event for fetching data
+        data,
+        loading,
+        error,
+        errorInfo,
+        fetchData
       }) => {
         return (
           <div>
-            {/* Handle response */}
+            {loading ? (
+              <h1>Loading...</h1>
+            ) : (
+              {data.map(value => {
+                return <p>{value}</p>
+              })}
+            )}
           </div>
         )
       }}

@@ -6,10 +6,10 @@ Ajax with React Component
 
 | Name         |      Type   |  Default | Description |
 |--------------|-------------|----------|-------------|
-| url          |  string     | ' '      | the URL you want to fetch from
-| method       | string      | GET      | GET, POST, PUT and DELETE
-| asJSON       | boolean     | true     | If you want your data response as JSON or not
-| options      | object      | {}       | Options such as Headers and body. (It's using regular fetch() internally)
+| url          |  string     | ' '      | The URL you want to fetch from, e.g a REST API.
+| method       | string      | GET      | GET, POST, PUT and DELETE.
+| asJSON       | boolean     | true     | If you want your data response as JSON or not.
+| options      | object      | {}       | Options such as Headers and body. (It's using regular fetch() internally).
 | forceRefetch | boolean     | false    | Used with `withEvent`-prop, if you want to fetch again on each click or just the first click.
 | withEvent    | boolean     | false    | If not used, `componentDidMount` fires the fetching instead of an event of your choice.
 
